@@ -7,7 +7,7 @@ import 'package:unicons/unicons.dart';
 
 class BottomNav extends StatefulWidget {
   const BottomNav({Key? key}) : super(key: key);
-
+  static const routeName = '/bottom-nav';
   @override
   _BottomNavState createState() => _BottomNavState();
 }

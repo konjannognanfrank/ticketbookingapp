@@ -55,7 +55,7 @@ class _TicketWidgetState extends State<TicketWidget> {
   @override
   Widget build(BuildContext context) {
     final busCart = Provider.of<Bus>(context, listen: false);
-    final cart = Provider.of<Cart>(context, listen: false);
+    final cart = Provider.of<Cart>(context);
     final seat = Provider.of<CartItem>(context);
     final busData = Provider.of<BusProvider>(context);
     final bus = busData.bus;
@@ -180,12 +180,12 @@ class _TicketWidgetState extends State<TicketWidget> {
                     IconButton(
                         onPressed: () {
                           cart.addItem(
-                              busCart.busNumber,
-                              busCart.price,
-                              busCart.companyName,
-                              busCart.numberOfSeats,
-                              busCart.fromCity,
-                              busCart.destinationCity);
+                              widget.busNumber,
+                              widget.price,
+                              widget.companyName,
+                              int.parse(widget.seatNuumber),
+                              widget.fromCity,
+                              widget.destinationCity);
                           ScaffoldMessenger.of(context).hideCurrentSnackBar();
                           ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                             content: Text(

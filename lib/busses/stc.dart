@@ -25,13 +25,13 @@ class Stc extends StatelessWidget {
         .firstWhere((busNum) => busNum.busNumber == busNum1);
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: Color(0xFFF27e85b),
         elevation: 0,
         actions: [
           Consumer<Cart>(
             builder: (_, notifier, ch) => Badge(
               child: ch!,
-              value: notifier.itemCount.toString(),
+              value: notifier.itemCount,
               color: Colors.red,
             ),
             child: IconButton(
@@ -40,7 +40,7 @@ class Stc extends StatelessWidget {
               },
               icon: Icon(
                 Icons.shopping_cart,
-                color: Colors.black,
+                color: Colors.white,
               ),
             ),
           ),
@@ -51,7 +51,7 @@ class Stc extends StatelessWidget {
             },
             icon: Icon(
               Icons.arrow_back_ios,
-              color: Colors.black,
+              color: Colors.white,
             )),
         title: Text(
           title!,

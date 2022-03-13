@@ -44,7 +44,9 @@ class _TicketBookingHomePageState extends State<TicketBookingHomePage> {
               children: [
                 Container(
                   height: MediaQuery.of(context).size.height / 4,
-                  decoration: BoxDecoration(color: Colors.blue),
+                  decoration: BoxDecoration(
+                    color: Color(0xFFF27e85b),
+                  ),
                   child: Swiper(
                     itemCount: 4,
                     controller: SwiperController(),
@@ -202,23 +204,24 @@ class _TicketBookingHomePageState extends State<TicketBookingHomePage> {
                             ),
                           )),
                       Expanded(
-                          flex: 4,
-                          child: ListView.builder(
-                            scrollDirection: Axis.horizontal,
-                            itemBuilder: (context, index) {
-                              return Consumer<Cart>(
+                        flex: 4,
+                        child: ListView.builder(
+                          scrollDirection: Axis.horizontal,
+                          itemBuilder: (context, index) {
+                            return Consumer<Cart>(
                                 builder: (_, notifier, ch) =>
                                     UpcomingTicketWidget(
-                                  companyName:
-                                      notifier.items[index]!.companyName,
-                                  fromCity: notifier.items[index]!.fromCity,
-                                  seatNumber: notifier.items[index]!.seatNumber,
-                                  toCity: notifier.items[index]!.toCity,
-                                ),
-                              );
-                            },
-                            itemCount: cart.items.length,
-                          )),
+                                      companyName:
+                                          notifier.items[index]!.companyName,
+                                      fromCity: notifier.items[index]!.fromCity,
+                                      seatNumber:
+                                          notifier.items[index]!.seatNumber,
+                                      toCity: notifier.items[index]!.toCity,
+                                    ));
+                          },
+                          itemCount: cart.items.length,
+                        ),
+                      ),
                     ],
                   ),
                 ),

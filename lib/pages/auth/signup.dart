@@ -60,40 +60,35 @@ class _SignupState extends State<Signup> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: Text(''),
         centerTitle: false,
         elevation: 0,
-        backgroundColor: Colors.white,
-        title: InkWell(
-          onTap: () {
-            Navigator.of(context)
-                .push(MaterialPageRoute(builder: (context) => Login()));
-          },
-          child: Text(
-            "Signup",
-            style: TextStyle(color: Colors.black),
-          ),
+        backgroundColor: Color(0xFFF27e85b),
+        title: Text(
+          "Signup",
+          style: TextStyle(color: Colors.black),
         ),
         actions: [
-          IconButton(
-              onPressed: () {
-                Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (context) => Login()));
-              },
-              icon: Icon(
-                Icons.login_outlined,
-                color: Colors.black,
-              )),
-          Padding(
-            padding: const EdgeInsets.only(right: 10),
-            child: Center(
-              child: InkWell(
-                onTap: () {},
+          InkWell(
+            onTap: () {
+              Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (context) => Login()));
+            },
+            child: Row(children: [
+              IconButton(
+                  onPressed: () {},
+                  icon: Icon(
+                    Icons.login_outlined,
+                    color: Colors.black,
+                  )),
+              Padding(
+                padding: const EdgeInsets.only(right: 10.0),
                 child: Text(
                   "Login",
                   style: TextStyle(color: Colors.black),
                 ),
               ),
-            ),
+            ]),
           ),
         ],
       ),
@@ -122,6 +117,8 @@ class _SignupState extends State<Signup> {
                         controller: _emailController,
                         keyboardType: TextInputType.emailAddress,
                         decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(15)),
                           focusColor: Color.fromRGBO(100, 0, 100, 10),
                           hintText: "Email Address",
                           prefixIcon: Icon(Icons.email_outlined),
@@ -141,6 +138,8 @@ class _SignupState extends State<Signup> {
                         keyboardType: TextInputType.text,
                         textInputAction: TextInputAction.next,
                         decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(15)),
                           focusColor: Color.fromRGBO(100, 0, 100, 10),
                           hintText: "Password",
                           prefixIcon: Icon(Icons.password_outlined),
@@ -164,6 +163,8 @@ class _SignupState extends State<Signup> {
                         keyboardType: TextInputType.text,
                         textInputAction: TextInputAction.done,
                         decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(15)),
                           focusColor: Color.fromRGBO(100, 0, 100, 10),
                           hintText: "Confirm Password",
                           prefixIcon: Icon(Icons.password_outlined),
@@ -190,7 +191,7 @@ class _SignupState extends State<Signup> {
                           _registerWithEmailPassword();
                         },
                         child: Container(
-                          height: MediaQuery.of(context).size.height / 17,
+                          height: MediaQuery.of(context).size.height / 15,
                           width: double.infinity,
                           decoration: BoxDecoration(
                             color: Colors.blue,

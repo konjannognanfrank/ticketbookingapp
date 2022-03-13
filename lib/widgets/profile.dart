@@ -17,12 +17,12 @@ class Profile extends StatelessWidget {
       appBar: AppBar(
         centerTitle: true,
         elevation: 0,
-        backgroundColor: Colors.white38,
+        backgroundColor: Color(0xFFF27e85b),
         leading: IconButton(
             onPressed: () {
               Navigator.of(context).pop();
             },
-            icon: Icon(Icons.arrow_back_ios, color: Colors.black)),
+            icon: Icon(Icons.arrow_back_ios, color: Colors.white)),
         title: Text(
           "Account",
           style: TextStyle(color: Colors.black),
@@ -38,6 +38,45 @@ class Profile extends StatelessWidget {
                 child: Text("Edit Profile"),
               ))
         ],
+        bottom: PreferredSize(
+          preferredSize: Size.fromHeight(50),
+          child: Padding(
+            padding: const EdgeInsets.only(left: 10, right: 10, bottom: 10),
+            child: Expanded(
+                flex: 2,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 8),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.orange[50],
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: Expanded(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          CircleAvatar(
+                            radius: 12,
+                            backgroundColor: Colors.white,
+                            child: Text("😷"),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              "Covid: We strictly adhere to the Covid-19 rules!",
+                              style: TextStyle(
+                                  color: Colors.orange,
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                )),
+          ),
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(10.0),
@@ -47,40 +86,23 @@ class Profile extends StatelessWidget {
               alignment: Alignment.center,
               children: [
                 Container(
-                  width: MediaQuery.of(context).size.width / 4,
-                  height: MediaQuery.of(context).size.height / 10,
-                  decoration: BoxDecoration(
-                      color: Colors.grey,
-                      borderRadius: BorderRadius.circular(10)),
+                  width: MediaQuery.of(context).size.width / 3,
+                  height: MediaQuery.of(context).size.height / 8,
+                  decoration:
+                      BoxDecoration(color: Colors.grey, shape: BoxShape.circle),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(10),
                     child: Consumer<ProfileInfo>(
                       builder: (_, notifier, __) => Image.network(
                         '${notifier.image}',
-                        fit: BoxFit.cover,
+                        fit: BoxFit.fill,
                       ),
                     ),
                   ),
                 ),
-                Positioned(
-                  bottom: 2,
-                  right: 130,
-                  child: Container(
-                    width: MediaQuery.of(context).size.width / 9,
-                    height: MediaQuery.of(context).size.height / 21,
-                    decoration: BoxDecoration(
-                        color: Colors.grey,
-                        borderRadius: BorderRadius.circular(10)),
-                    child: IconButton(
-                        onPressed: () {
-                          //TODO: take a picture
-                        },
-                        icon: Icon(UniconsLine.camera)),
-                  ),
-                )
               ],
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 15),
             Padding(
               padding: const EdgeInsets.only(left: 10, bottom: 10),
               child: Text("Name"),

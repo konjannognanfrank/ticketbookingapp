@@ -47,57 +47,57 @@ class _SettingsState extends State<Settings> {
       appBar: AppBar(
         leading: Text(''),
         elevation: 0,
-        backgroundColor: Colors.white,
+        backgroundColor: Color(0xFFF27e85b),
         title: Text(
           "Settings",
           style: TextStyle(color: Colors.black),
+        ),
+        bottom: PreferredSize(
+          preferredSize: Size.fromHeight(50),
+          child: Padding(
+            padding: const EdgeInsets.only(left: 10, right: 10, bottom: 10),
+            child: Expanded(
+                flex: 2,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 8),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.orange[50],
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: Expanded(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          CircleAvatar(
+                            radius: 12,
+                            backgroundColor: Colors.white,
+                            child: Text("😷"),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              "Covid: We strictly adhere to the Covid-19 rules!",
+                              style: TextStyle(
+                                  color: Colors.orange,
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                )),
+          ),
         ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(10.0),
         child: ListView(
           children: [
-            Row(
-              children: [
-                Container(
-                  width: MediaQuery.of(context).size.width / 5,
-                  height: MediaQuery.of(context).size.height / 11,
-                  decoration: BoxDecoration(
-                      color: Colors.grey,
-                      borderRadius: BorderRadius.circular(10)),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(10),
-                    child: Consumer<ProfileInfo>(
-                      builder: (_, notifier, __) => Image.network(
-                        '${notifier.image}',
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  width: 20,
-                ),
-                Column(
-                  children: [
-                    Consumer<ProfileInfo>(
-                      builder: (_, notifier, __) => Text(
-                        '${notifier.name}',
-                        style: TextStyle(fontSize: 20),
-                      ),
-                    ),
-                    Consumer<ProfileInfo>(
-                      builder: (_, notifier, __) => Text(
-                        '${notifier.email}',
-                        style: TextStyle(fontSize: 15),
-                      ),
-                    ),
-                  ],
-                )
-              ],
-            ),
             SizedBox(
-              height: 30,
+              height: 10,
             ),
             ListTile(
               onTap: () {

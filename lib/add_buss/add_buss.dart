@@ -70,6 +70,7 @@ class _AddBusState extends State<AddBus> {
     BusProvider busProvider = Provider.of<BusProvider>(context);
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Color(0xFFF27e85b),
         title: Text("Add Buss"),
       ),
       body: ListView(

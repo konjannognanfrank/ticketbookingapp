@@ -5,6 +5,7 @@ import 'package:myuiapp/widgets/profile.dart';
 import 'package:http/http.dart' as http;
 import '../models/profile.dart';
 import 'dart:convert';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class ProfileProvider with ChangeNotifier {
   List<ProfileInfo> _profile = [];
@@ -12,6 +13,23 @@ class ProfileProvider with ChangeNotifier {
   List<ProfileInfo> get profile {
     return [..._profile];
   }
+
+  FirebaseFirestore firestore = FirebaseFirestore.instance;
+
+  // addUser() {
+  //   // ignore: unnecessary_cast
+  //   Map<String, dynamic> profile1 = {
+  //         'email': ,
+  //         'location': profileData['location'],
+  //         'name': profileData['name'],
+  //         'tellNumber': profileData['tellNumber'],
+  //         'image': profileData['image']} as Map<String, dynamic>;
+  //   CollectionReference collectionReference =
+  //       FirebaseFirestore.instance.collection('users');
+  //   var profile1 = collectionReference.add(ProfileProvider());
+  //   _profile.add(profile);
+  //   notifyListeners();
+  // }
 
   Future<void> retrieveData() async {
     var url = Uri.parse(

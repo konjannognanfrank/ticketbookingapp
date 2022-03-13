@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:myuiapp/models/profile.dart';
@@ -19,6 +20,7 @@ class _EditProfileState extends State<EditProfile> {
   TextEditingController _numberController = TextEditingController();
   TextEditingController _locationController = TextEditingController();
   TextEditingController _imageController = TextEditingController();
+  FirebaseFirestore firestore = FirebaseFirestore.instance;
   var _profile =
       ProfileInfo(email: "", location: "", name: "", tellNumber: "", image: '');
   final _formKey = GlobalKey<FormState>();
@@ -30,14 +32,17 @@ class _EditProfileState extends State<EditProfile> {
       return;
     }
     _formKey.currentState!.save();
-    Provider.of<ProfileProvider>(context, listen: false).addProfile(_profile);
+
+    //Provider.of<ProfileProvider>(context, listen: false).addUser(_profile);
 
     setState(() {
       isLoading = true;
     });
+    print(_image!.path.toString());
     _nameController.clear();
     _numberController.clear();
     _locationController.clear();
+    _image = null;
 
     isLoading = false;
   }
@@ -134,13 +139,52 @@ class _EditProfileState extends State<EditProfile> {
             },
             icon: Icon(
               Icons.arrow_back_ios_new,
-              color: Colors.black,
+              color: Colors.white,
             )),
         elevation: 0,
-        backgroundColor: Colors.white,
+        backgroundColor: Color(0xFFF27e85b),
         title: Text(
           'Edit Profile',
           style: TextStyle(color: Colors.black),
+        ),
+        bottom: PreferredSize(
+          preferredSize: Size.fromHeight(50),
+          child: Padding(
+            padding: const EdgeInsets.only(left: 10, right: 10, bottom: 10),
+            child: Expanded(
+                flex: 2,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 8),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.orange[50],
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: Expanded(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          CircleAvatar(
+                            radius: 12,
+                            backgroundColor: Colors.white,
+                            child: Text("😷"),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              "Covid: We strictly adhere to the Covid-19 rules!",
+                              style: TextStyle(
+                                  color: Colors.orange,
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                )),
+          ),
         ),
       ),
       body: isLoading
@@ -162,11 +206,13 @@ class _EditProfileState extends State<EditProfile> {
                                   location: _profile.location,
                                   name: value!,
                                   tellNumber: _profile.tellNumber,
-                                  image: _profile.image);
+                                  image: _image!.path.toString());
                             },
                             controller: _nameController,
                             keyboardType: TextInputType.name,
                             decoration: InputDecoration(
+                              border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(15)),
                               labelText: 'Full Name',
                             ),
                             textInputAction: TextInputAction.next,
@@ -177,6 +223,9 @@ class _EditProfileState extends State<EditProfile> {
                               return null;
                             },
                           ),
+                          SizedBox(
+                            height: 20,
+                          ),
                           TextFormField(
                             onSaved: (value) {
                               _profile = ProfileInfo(
@@ -184,11 +233,13 @@ class _EditProfileState extends State<EditProfile> {
                                   location: _profile.location,
                                   name: _profile.name,
                                   tellNumber: value!,
-                                  image: _profile.image);
+                                  image: _image!.path.toString());
                             },
                             controller: _numberController,
                             keyboardType: TextInputType.phone,
                             decoration: InputDecoration(
+                              border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(15)),
                               labelText: 'Telephone',
                             ),
                             textInputAction: TextInputAction.next,
@@ -199,6 +250,9 @@ class _EditProfileState extends State<EditProfile> {
                               return null;
                             },
                           ),
+                          SizedBox(
+                            height: 20,
+                          ),
                           TextFormField(
                             onSaved: (value) {
                               _profile = ProfileInfo(
@@ -206,11 +260,13 @@ class _EditProfileState extends State<EditProfile> {
                                   location: value!,
                                   name: _profile.name,
                                   tellNumber: _profile.tellNumber,
-                                  image: _profile.image);
+                                  image: _image!.path.toString());
                             },
                             controller: _locationController,
                             keyboardType: TextInputType.text,
                             decoration: InputDecoration(
+                              border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(15)),
                               labelText: 'Location',
                             ),
                             textInputAction: TextInputAction.next,
@@ -277,7 +333,7 @@ class _EditProfileState extends State<EditProfile> {
                               print('its saved');
                             },
                             child: Container(
-                              height: MediaQuery.of(context).size.height / 17,
+                              height: MediaQuery.of(context).size.height / 15,
                               width: double.infinity,
                               decoration: BoxDecoration(
                                 color: Colors.blue,

@@ -55,7 +55,7 @@ class Cart with ChangeNotifier {
           (existingCar) => CartItem(
                 toCity: existingCar.toCity,
                 fromCity: existingCar.fromCity,
-                quantity: existingCar.quantity + 1,
+                quantity: existingCar.quantity++,
                 seatNumber: existingCar.seatNumber,
                 busNumber: existingCar.busNumber,
                 companyName: existingCar.companyName,

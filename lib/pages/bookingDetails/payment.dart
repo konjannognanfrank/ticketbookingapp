@@ -30,7 +30,7 @@ class _PaymentState extends State<Payment> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Color(0xFFF27e85b),
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,

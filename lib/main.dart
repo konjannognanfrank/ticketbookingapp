@@ -9,6 +9,7 @@ import 'package:myuiapp/pages/bookingDetails/payment.dart';
 import 'package:myuiapp/provider/bus.dart';
 import 'package:myuiapp/provider/cartProvider.dart';
 import 'package:myuiapp/provider/profile.dart';
+import 'package:myuiapp/widgets/bottomNav.dart';
 import 'package:myuiapp/widgets/ticketWidget.dart';
 import 'package:provider/provider.dart';
 import 'busses/stc.dart';
@@ -86,6 +87,7 @@ class MyApp extends StatelessWidget {
             '/login-screen': (context) => Login(),
             '/payment': (context) => Payment(),
             '/cart-screen': (context) => CartScreen(),
+            '/bottom-nav': (context) => BottomNav(),
           }),
     );
   }

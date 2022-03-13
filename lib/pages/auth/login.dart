@@ -15,7 +15,7 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-  final _formKey = GlobalKey();
+  final _formKey = GlobalKey<FormState>();
 
   TextEditingController _emailController = TextEditingController();
 
@@ -42,13 +42,15 @@ class _LoginState extends State<Login> {
     _passwordController.clear();
   }
 
+  bool obsecureText = true;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         centerTitle: false,
         elevation: 0,
-        backgroundColor: Colors.white,
+        backgroundColor: Color(0xFFF27e85b),
         title: Text(
           "Login",
           style: TextStyle(color: Colors.black),
@@ -100,6 +102,8 @@ class _LoginState extends State<Login> {
                     controller: _emailController,
                     keyboardType: TextInputType.emailAddress,
                     decoration: InputDecoration(
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(15)),
                       focusColor: Color.fromRGBO(100, 0, 100, 10),
                       hintText: "Email",
                       prefixIcon: Icon(Icons.email_outlined),
@@ -111,26 +115,36 @@ class _LoginState extends State<Login> {
                   TextFormField(
                     textInputAction: TextInputAction.done,
                     controller: _passwordController,
-                    obscureText: true,
+                    obscureText: obsecureText,
                     onFieldSubmitted: (_) {
                       _signinWithEmailPassword();
                     },
                     keyboardType: TextInputType.text,
                     decoration: InputDecoration(
-                      focusColor: Color.fromRGBO(100, 0, 100, 10),
-                      hintText: "Password",
-                      prefixIcon: Icon(Icons.password_outlined),
-                    ),
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(15)),
+                        focusColor: Color.fromRGBO(100, 0, 100, 10),
+                        hintText: "Password",
+                        prefixIcon: Icon(Icons.password_outlined),
+                        suffixIcon: IconButton(
+                            onPressed: () {
+                              setState(() {
+                                obsecureText = !obsecureText;
+                              });
+                            },
+                            icon: Icon(Icons.remove_red_eye))),
                   ),
                   SizedBox(
                     height: 25,
                   ),
                   InkWell(
                     onTap: () {
+                      Navigator.of(context).pushNamed('bottom-nav');
+
                       _signinWithEmailPassword();
                     },
                     child: Container(
-                      height: MediaQuery.of(context).size.height / 17,
+                      height: MediaQuery.of(context).size.height / 15,
                       width: double.infinity,
                       decoration: BoxDecoration(
                         color: Colors.blue,
@@ -141,6 +155,7 @@ class _LoginState extends State<Login> {
                           "Login",
                           style: TextStyle(
                             color: Colors.white,
+                            fontWeight: FontWeight.bold,
                             fontSize: 20,
                           ),
                         ),

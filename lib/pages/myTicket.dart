@@ -17,31 +17,50 @@ class Myticket extends StatelessWidget {
       appBar: AppBar(
         leading: Text(""),
         elevation: 0,
-        backgroundColor: Colors.blue,
+        backgroundColor: Color(0xFFF27e85b),
         title: Text(
           "My Tickets",
           style: TextStyle(color: Colors.white),
         ),
         bottom: PreferredSize(
-            preferredSize: Size.fromHeight(kToolbarHeight),
-            child: Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Container(
-                height: MediaQuery.of(context).size.height / 15,
-                child: TextFormField(
-                  decoration: InputDecoration(
-                      labelText: "Search",
-                      labelStyle: TextStyle(color: Colors.white),
-                      prefixIcon: Icon(Icons.search, color: Colors.white),
-                      focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20),
-                          borderSide: BorderSide(color: Colors.white)),
-                      border: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.white),
-                          borderRadius: BorderRadius.circular(20))),
-                ),
-              ),
-            )),
+          preferredSize: Size.fromHeight(50),
+          child: Padding(
+            padding: const EdgeInsets.only(left: 10, right: 10, bottom: 10),
+            child: Expanded(
+                flex: 2,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 8),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.orange[50],
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: Expanded(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          CircleAvatar(
+                            radius: 12,
+                            backgroundColor: Colors.white,
+                            child: Text("😷"),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              "Covid: We strictly adhere to the Covid-19 rules!",
+                              style: TextStyle(
+                                  color: Colors.orange,
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                )),
+          ),
+        ),
       ),
       body: ListView.separated(
         itemBuilder: (context, index) => Consumer<BusProvider>(

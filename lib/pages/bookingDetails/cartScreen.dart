@@ -17,11 +17,12 @@ class CartScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('my ticket'),
+        backgroundColor: Color(0xFFF27e85b),
         leading: IconButton(
             onPressed: () {
               Navigator.of(context).pop();
             },
-            icon: Icon(Icons.arrow_back)),
+            icon: Icon(Icons.arrow_back_ios)),
         bottom: PreferredSize(
           preferredSize: Size.fromHeight(50),
           child: Padding(
@@ -87,14 +88,16 @@ class CartScreen extends StatelessWidget {
             height: 15,
           ),
           Expanded(
-              child: ListView.builder(
-                  itemCount: cart.items.length,
-                  itemBuilder: (context, i) => CartItemWidget(
-                      busNumber: cart.items.values.toList()[i].busNumber,
-                      companyName: cart.items.values.toList()[i].companyName,
-                      id: cart.items.keys.toList()[i],
-                      price: cart.items.values.toList()[i].price,
-                      quantity: cart.items.values.toList()[i].quantity)))
+            child: ListView.builder(
+              itemCount: cart.items.length,
+              itemBuilder: (context, i) => CartItemWidget(
+                  busNumber: cart.items.values.toList()[i].busNumber,
+                  companyName: cart.items.values.toList()[i].companyName,
+                  id: cart.items.keys.toList()[i],
+                  price: cart.items.values.toList()[i].price,
+                  quantity: cart.items.values.toList()[i].quantity),
+            ),
+          ),
         ],
       ),
       // body: ListView.builder(
