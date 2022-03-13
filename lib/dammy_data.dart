@@ -1,0 +1,131 @@
+// import 'package:flutter/material.dart';
+// import 'package:myuiapp/models/busModel.dart';
+// import 'package:myuiapp/models/profile.dart';
+// import 'package:myuiapp/models/ticketModel.dart';
+
+// const Ticket_Details = const [
+//   const Ticket(
+//       arivalTime: '7:00am',
+//       departureTime: '2:30pm',
+//       reportingTime: '1:30pm',
+//       destinationCity: ' Accra',
+//       fromCity: 'Walewale',
+//       ticketId: 'st10',
+//       busNumber: 'Bus',
+//       seatNumber: ''),
+//   const Ticket(
+//       seatNumber: '',
+//       arivalTime: '7:30am',
+//       departureTime: '2:30pm',
+//       destinationCity: ' Kumasi',
+//       fromCity: 'Walewale',
+//       reportingTime: '1:30pm',
+//       ticketId: 'st23',
+//       busNumber: 'vip2'),
+//   const Ticket(
+//       seatNumber: '',
+//       arivalTime: '8:30am',
+//       departureTime: '9:30',
+//       destinationCity: 'Tamale',
+//       fromCity: 'Walewale',
+//       reportingTime: '1:30pm',
+//       ticketId: 'st23',
+//       busNumber: 'vision1'),
+//   const Ticket(
+//       arivalTime: '7:30am',
+//       departureTime: '12:30',
+//       destinationCity: 'Accra',
+//       fromCity: 'Tamale',
+//       reportingTime: '10:30',
+//       ticketId: 'st15',
+//       busNumber: 'stc3',
+//       seatNumber: ''),
+//   const Ticket(
+//     seatNumber: '',
+//     arivalTime: '7:25',
+//     departureTime: '10:30',
+//     destinationCity: 'Kumasi',
+//     fromCity: 'Tamale',
+//     reportingTime: '9:00',
+//     ticketId: 'st43',
+//     busNumber: 'stc2',
+//   ),
+//   Ticket(
+//       seatNumber: '',
+//       arivalTime: '5:00pm',
+//       departureTime: '2:00am',
+//       destinationCity: 'Accra',
+//       fromCity: 'Bolga',
+//       reportingTime: '4:00pm',
+//       ticketId: '12',
+//       busNumber: 'stc1'),
+//   Ticket(
+//       seatNumber: '',
+//       arivalTime: '5:00pm',
+//       departureTime: '2:00am',
+//       destinationCity: 'Accra',
+//       fromCity: 'Bolga',
+//       reportingTime: '4:00pm',
+//       ticketId: '12',
+//       busNumber: 'stc2'),
+//   Ticket(
+//       seatNumber: '',
+//       arivalTime: '5:00pm',
+//       departureTime: '2:00am',
+//       destinationCity: 'Accra',
+//       fromCity: 'Bolga',
+//       reportingTime: '4:00pm',
+//       ticketId: '12',
+//       busNumber: 'stc3'),
+//   Ticket(
+//       seatNumber: '',
+//       arivalTime: '5:00pm',
+//       departureTime: '2:00am',
+//       destinationCity: 'Accra',
+//       fromCity: 'Bolga',
+//       reportingTime: '4:00pm',
+//       ticketId: '12',
+//       busNumber: 'mttd1'),
+//   Ticket(
+//       seatNumber: '',
+//       arivalTime: '5:00pm',
+//       departureTime: '2:00am',
+//       destinationCity: 'Accra',
+//       fromCity: 'Bolga',
+//       reportingTime: '4:00pm',
+//       ticketId: '14',
+//       busNumber: 'oa1'),
+//   Ticket(
+//       seatNumber: '',
+//       arivalTime: '5:00pm',
+//       departureTime: '2:00am',
+//       destinationCity: 'Accra',
+//       fromCity: 'walewale',
+//       reportingTime: '4:00pm',
+//       ticketId: '13',
+//       busNumber: 'stc5'),
+//   Ticket(
+//       seatNumber: '',
+//       arivalTime: '5:00pm',
+//       departureTime: '2:00am',
+//       destinationCity: 'Kumasi',
+//       fromCity: 'Bolga',
+//       reportingTime: '4:00pm',
+//       ticketId: '17',
+//       busNumber: 'stc1'),
+// ];
+
+// List<ProfileInfo> _profile = [
+//   ProfileInfo(
+//     email: 'wewovi10.jw@gmail.com',
+//     location: 'walewale',
+//     name: 'Jonas wewovi',
+//     tellNumber: '0207885790',
+//   ),
+//   ProfileInfo(
+//     email: 'wewovi10.jw@gmail.com',
+//     location: 'walewale',
+//     name: 'Jonas wewovi',
+//     tellNumber: '0207885790',
+//   )
+// ];
